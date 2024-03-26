@@ -1,0 +1,179 @@
+{
+  "version": "36.0.0",
+  "artifacts": {
+    "PluginStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "PluginStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "PluginStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "PluginStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/677a2bfdfeba934db57497764acd41fc74be2ec531d77ab463f1ba487512cf11.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "PluginStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "PluginStack.assets"
+      ],
+      "metadata": {
+        "/PluginStack/Widgets/plugin_users/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetspluginusersA5454FBF"
+          }
+        ],
+        "/PluginStack/Widgets/SubscribeHandler/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetsSubscribeHandlerServiceRole70D4F24C"
+          }
+        ],
+        "/PluginStack/Widgets/SubscribeHandler/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetsSubscribeHandlerServiceRoleDefaultPolicy409E5959"
+          }
+        ],
+        "/PluginStack/Widgets/SubscribeHandler/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetsSubscribeHandlerD8B95BC3"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Widgetssmsapi8E0D53B6"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapiDeployment26FC4D5024b034a0c4dc93fcd2ae40d5c6d7b4d3"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapiDeploymentStageprodE7C8B088"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapiEndpoint3531084C"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Default/subscribe/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapisubscribeB99E19D7"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Default/subscribe/POST/ApiPermission.PluginStackWidgetssmsapiF201961A.POST..subscribe": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapisubscribePOSTApiPermissionPluginStackWidgetssmsapiF201961APOSTsubscribe766C25F4"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Default/subscribe/POST/ApiPermission.Test.PluginStackWidgetssmsapiF201961A.POST..subscribe": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapisubscribePOSTApiPermissionTestPluginStackWidgetssmsapiF201961APOSTsubscribe7C097001"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Default/subscribe/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapisubscribePOST38D543E5"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Default/subscribe/GET/ApiPermission.PluginStackWidgetssmsapiF201961A.GET..subscribe": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapisubscribeGETApiPermissionPluginStackWidgetssmsapiF201961AGETsubscribe9768F585"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Default/subscribe/GET/ApiPermission.Test.PluginStackWidgetssmsapiF201961A.GET..subscribe": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapisubscribeGETApiPermissionTestPluginStackWidgetssmsapiF201961AGETsubscribeE9AE4C06"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Default/subscribe/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapisubscribeGET7FDB479F"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Default/subscribe/DELETE/ApiPermission.PluginStackWidgetssmsapiF201961A.DELETE..subscribe": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapisubscribeDELETEApiPermissionPluginStackWidgetssmsapiF201961ADELETEsubscribe8B84F32F"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Default/subscribe/DELETE/ApiPermission.Test.PluginStackWidgetssmsapiF201961A.DELETE..subscribe": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapisubscribeDELETEApiPermissionTestPluginStackWidgetssmsapiF201961ADELETEsubscribeB76D2021"
+          }
+        ],
+        "/PluginStack/Widgets/sms-api/Default/subscribe/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WidgetssmsapisubscribeDELETE672F982C"
+          }
+        ],
+        "/PluginStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/PluginStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/PluginStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/PluginStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "PluginStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
