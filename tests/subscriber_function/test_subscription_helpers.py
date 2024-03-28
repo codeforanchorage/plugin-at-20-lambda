@@ -17,15 +17,13 @@ def test_extract_good_zip(zipcode, expected):
 
 
 def test_extract_non_local_zip():
-    '''Non-local zip codes should return none'''
-    extracted = helpers.extract_zip('77102')
-
-    assert extracted is None
+    '''Non-local zip codes should raise NotLocalZipError'''
+    with pytest.raises(helpers.NotLocalZipError):
+        helpers.extract_zip('77102')
 
 
 @pytest.mark.parametrize("zipcode", ['1', 'hello', '', '99577656', None])
 def test_extract_bad_zip(zipcode):
     '''Input that doesn't look like a zip should return none'''
-    extracted = helpers.extract_zip(zipcode)
-
-    assert extracted is None
+    with pytest.raises(ValueError):
+        helpers.extract_zip(zipcode)

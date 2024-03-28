@@ -22,8 +22,8 @@ class PluginService(Construct):
         handler = lambda_.Function(
             self, "SubscribeHandler",
             runtime=lambda_.Runtime.PYTHON_3_10,
-            code=lambda_.Code.from_asset('lambda_functions/subscriber_function'),  # noqa 501
-            handler='index.handler',
+            code=lambda_.Code.from_asset('lambda_functions/'),  # noqa 501
+            handler='subscriber_function.index.handler',
             environment=dict(
                 TABLE=table.table_name
                 )

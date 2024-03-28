@@ -1,6 +1,12 @@
+# flake8: noqa 501
+
 import re
 
 zip_rx = re.compile(r'^(\d{5})(?:[-\s]\d{4})?$')
+
+
+class NotLocalZipError(Exception):
+    pass
 
 
 def extract_zip(zip_string):
@@ -11,11 +17,16 @@ def extract_zip(zip_string):
     try:
         match = zip_rx.match(zip_string)
     except TypeError:
-        return None
-    if match is not None:
-        five_digit_zip = match.group(1)
-        if five_digit_zip in local_zips:
-            return five_digit_zip
+        raise ValueError("Not a Zipcode")
+
+    if match is None:
+        raise ValueError("Not a Zipcode")
+
+    five_digit_zip = match.group(1)
+    if five_digit_zip not in local_zips:
+        raise NotLocalZipError
+
+    return five_digit_zip
 
 
 local_zips = set([
@@ -59,12 +70,10 @@ local_zips = set([
     '99688'
     ])
 
-
-# avoiding importing the whole twilio library for this
-def make_twilio_response(message):
-    return f'''
-<?xml version="1.0" encoding="UTF-8"?>
-<Response>
-    <Message>{message}</Message>
-</Response>
-'''
+messages = {
+    "WELCOME": "Hello there from Code for Anchorage & Anchorage DHHS, just send me your zipcode and I'll send you an evening reminder to plug in your car if it'll be below 20 degrees at night.",
+    "GOODBYE": "You've been unsubscribed. Later!",
+    "BAD_ZIP": "Your zip code isn't in Anchorage and the thing is that we only know about the weather in Anchorage. Sorry, we can't help you.",
+    "CONFIRMATION": "Alrighty, you're signed up. Send STOP if you want the messages to stop and START if you change your mind after stopping.",
+    "INSTRUCTIONS": "Sorry, I don't know what you want. Send STOP if you want the messages to stop and START if you change your mind after stopping.",
+}
