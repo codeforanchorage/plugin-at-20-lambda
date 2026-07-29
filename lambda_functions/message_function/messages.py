@@ -1,0 +1,24 @@
+import random
+
+NOTIFICATIONS = [
+    "It's going to be cold tonight, don't forget to plug your car in.",
+    "Brrrr, plug that car in tonight.",
+    "It's getting below 20 degrees tonight, do the thing with the car and the plug.",
+    "You're going to want to plug in your car, it's going to be cold tonight.",
+    "Want cleaner air? Plug in your car tonight: it's a cold one.",
+    "Your car will start like butter if you plug it in tonight.",
+    "It will be chilly (below 20F, -6.66 C, 266.48 Kelvin) tonight, plug in your car!",
+    "You should plug in your car before you go to bed: it shall be cold tonight.",
+    "Did you plug in your rig? It's going to be a cold one...",
+    "Have you plugged in your car? It's going to get cold.",
+    "It's going to be a cold one. Plug in your car.",
+    "Wake up to a car that starts: plug in your car.",
+    "Yar, 'tis cold as the watery depths. Ye best be pluggin' in.",
+    "When the night is cold, a vehicle yearns for the electric warmth. Tonight is such a night.",
+    "Winter is coming. Actually, it's here now! And your car needs some electrons to warm up.",
+    "Don't be a blockhead, plug in your blockheater cause it's going to be cold."
+]
+
+
+def get_message():
+    return random.choice(NOTIFICATIONS)

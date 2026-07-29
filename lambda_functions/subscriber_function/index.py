@@ -1,7 +1,7 @@
 import os
 from urllib.parse import parse_qs
 import boto3
-from .helpers import extract_zip, messages, NotLocalZipError
+from .helpers import extract_zip, messages, is_stop_message, NotLocalZipError
 
 ddb = boto3.resource('dynamodb')
 
@@ -30,6 +30,14 @@ def handler(event, context):
 
     incoming_phone = from_field[0]
 
+    if is_stop_message(body[0]):
+        table.update_item(
+            Key={'phone_number': incoming_phone},
+            UpdateExpression='set active=:active',
+            ExpressionAttributeValues={':active': False}
+        )
+        return response(messages['GOODBYE'])
+
     try:
         zipcode = extract_zip(body[0])
     except ValueError:
@@ -40,6 +48,8 @@ def handler(event, context):
     print(zipcode, incoming_phone)
 
     if zipcode:
+        # Edits an existing item’s attributes, or adds a
+        # new item to the table if it does not already exist.
         table.update_item(
             Key={'phone_number': incoming_phone},
             UpdateExpression='set zip=:zip, active=:active',

@@ -4,12 +4,20 @@ import re
 
 from common.zipcodes import local_zips
 
+TWILIO_STOP_WORDS =  ['STOP', 'STOPALL', 'UNSUBSCRIBE', 'CANCEL', 'END', 'QUIT']
 zip_rx = re.compile(r'^(\d{5})(?:[-\s]\d{4})?$')
 
 
 class NotLocalZipError(Exception):
     pass
 
+def is_stop_message(body_text):
+    '''
+    Twilio allows STOP, STOPALL, UNSUBSCRIBE, CANCEL, END, or QUIT
+    to unsubscribe. It needs to be only a single word. "Please Stop"
+    will not unsubsubscibe users.
+    '''
+    return body_text.upper() in TWILIO_STOP_WORDS
 
 def extract_zip(zip_string):
     '''
